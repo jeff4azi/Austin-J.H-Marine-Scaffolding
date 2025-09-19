@@ -29,11 +29,11 @@ const Nav = () => {
         <img
           src={AJH_logo}
           alt="AJH Logo Maring Scaffolding"
-          className="w-[40px] md:w-[50px]"
+          className={`${isScrolled ? "w-[40px] md:w-[60px]" : "w-[50px] md:w-[80px]"} hover:rotate-360 duration-300 ease-in-out`}
         />
 
         <ul
-          className={`absolute inset-0 h-[80vh] flex flex-col items-center justify-center font-bold bg-accent/20 backdrop-blur-sm duration-300 ease-in-out ${
+          className={`absolute inset-0 h-[80vh] flex flex-col items-center justify-center font-bold bg-accent/20 backdrop-blur-xl duration-300 ease-in-out ${
             isNavOverlayOpen ? "translate-x-0" : "translate-x-full"
           } lg:static lg:translate-0 lg:flex-row lg:h-fit lg:font-normal lg:text-nowrap lg:w-full lg:justify-between lg:backdrop-blur-none lg:bg-transparent`}
         >
@@ -45,10 +45,10 @@ const Nav = () => {
               <a href="/services">Services</a>
             </li>
             <li>
-              <a href="/about">About</a>
+              <a href="/projects">Projects</a>
             </li>
             <li>
-              <a href="/projects">Projects</a>
+              <a href="/about">About</a>
             </li>
             <li>
               <a href="/testimonials">Testimonials</a>
@@ -86,7 +86,7 @@ const Nav = () => {
           {!isNavOverlayOpen ? (
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="size-[1.5rem] md:size-[2rem]"
+              className="size-8 md:size-[2rem]"
               fill="#000"
               viewBox="0 0 256 256"
             >
@@ -95,7 +95,7 @@ const Nav = () => {
           ) : (
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="size-[1.5rem] md:size-[2rem]"
+              className="size-8 md:size-[2rem]"
               fill="#000000"
               viewBox="0 0 256 256"
             >

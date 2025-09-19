@@ -17,11 +17,11 @@ const shit = () => {
       <section id="services">
         <Services />
       </section>
+      <section id="projects" className="bg-dark text-light">
+        <Projects />
+      </section>
       <section id="about">
         <About />
-      </section>
-      <section id="projects">
-        <Projects />
       </section>
       <section id="testimonials">
         <Testimonials />

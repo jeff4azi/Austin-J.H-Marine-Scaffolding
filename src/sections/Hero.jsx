@@ -38,11 +38,11 @@ const Hero = () => {
               </button>
             </div>
 
-            <div className="absolute bottom-5 right-5 lg:bottom-15 md:right-15 z-20 backdrop-blur-sm w-[200px] md:w-[250px] p-3 md:p-5 rounded-xl space-y-2 md:space-y-5">
+            <div className="absolute bottom-5 right-5 lg:bottom-15 md:right-15 z-20 backdrop-blur-sm bg-black/30 w-[200px] md:w-[250px] p-5 md:p-5 rounded-xl space-y-2 md:space-y-5">
               <h1 className="text-sm md:text-xl lg:text-2xl font-bold">
                 Building the Future One project at a Time
               </h1>
-              <p className="text-sm md:text-md lg:text-lg text-gray-900">
+              <p className="text-fluid-small text-gray-900">
                 Here at Austin J.H Technical Support we errect, modify and
                 dismattle scaffolds
               </p>

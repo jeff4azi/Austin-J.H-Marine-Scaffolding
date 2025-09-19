@@ -14,21 +14,23 @@
 
 @layer utilities {
   .text-fluid-h1 {
-    @apply font-heading leading-tight;
-    font-size: clamp(2rem, 1rem + 3vw, 3.5rem); /* ~32px → ~56px */
+    @apply font-heading leading-tight font-[550];
+    font-size: clamp(1.5rem, 1rem + 3vw, 4rem); /* ~32px → ~56px */
   }
   .text-fluid-h2 {
-    @apply font-body leading-snug;
-    font-size: clamp(1.5rem, 0.5rem + 2.5vw, 2.5rem);
+    @apply font-heading font-medium leading-snug;
+    font-size: clamp(1.5rem, 0.5rem + 2.5vw, 3rem);
   }
   .text-fluid-h3 {
-    @apply font-body;
+    @apply font-heading font-medium;
     font-size: clamp(1.25rem, 0.5rem + 2vw, 2rem);
   }
   .text-fluid-p {
+    @apply font-body;
     font-size: clamp(1rem, 0.3rem + 1vw, 1.125rem); /* 16–18px */
   }
   .text-fluid-small {
+    @apply font-body;
     font-size: clamp(0.75rem, 0.5rem + 0.5vw, 0.875rem); /* 12–14px */
   }
 }
@@ -46,7 +48,7 @@ li {
 }
 
 section {
-  @apply px-6 md:px-16 py-20 md:py-28;
+  @apply py-10 md:py-14;
 }
 
 .link-active {
