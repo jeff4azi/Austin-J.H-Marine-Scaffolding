@@ -15,6 +15,8 @@ export const projects = [
   {id: 6, img: project6, title: "", description: ""},
 ]
 
+export const sections = ['home', 'services', 'projects', 'about', 'testimonials', 'quote']
+
 export const services = [
   {
     id: 1,

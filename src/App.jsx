@@ -17,7 +17,7 @@ const shit = () => {
       <section id="services">
         <Services />
       </section>
-      <section id="projects" className="bg-dark text-light">
+      <section id="projects" className="bg-dark text-gray-300">
         <Projects />
       </section>
       <section id="about">
@@ -29,7 +29,7 @@ const shit = () => {
       <section id="quote">
         <Quote />
       </section>
-      <section id="footer">
+      <section className="bg-dark text-gray-300">
         <Footer />
       </section>
     </main>

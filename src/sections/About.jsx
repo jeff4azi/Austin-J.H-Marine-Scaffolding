@@ -24,7 +24,7 @@ const About = () => {
             <img src={img} alt="offshore platform" className="w-full object-cover rounded" />
             <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eligendi eius fugiat corrupti distinctio mollitia veritatis perspiciatis debitis deleniti labore, ipsum, hic enim. Dicta, veritatis eos cumque aliquam laboriosam incidunt porro. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maxime rem praesentium magnam, temporibus culpa ipsa veniam sit iusto officiis, harum magni alias eum dignissimos? Nostrum suscipit vitae odio? Suscipit, dolorem?</p>
           </div>
-          <section className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+          <section className="w-full grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 xl:place-items-center">
             {aboutDetailsEl}
           </section>
         </div>

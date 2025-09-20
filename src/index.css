@@ -18,11 +18,11 @@
     font-size: clamp(1.5rem, 1rem + 3vw, 4rem); /* ~32px → ~56px */
   }
   .text-fluid-h2 {
-    @apply font-heading font-medium leading-snug;
+    @apply font-heading font-semibold md:font-medium leading-snug;
     font-size: clamp(1.5rem, 0.5rem + 2.5vw, 3rem);
   }
   .text-fluid-h3 {
-    @apply font-heading font-medium;
+    @apply font-heading font-semibold md:font-medium;
     font-size: clamp(1.25rem, 0.5rem + 2vw, 2rem);
   }
   .text-fluid-p {
@@ -32,6 +32,17 @@
   .text-fluid-small {
     @apply font-body;
     font-size: clamp(0.75rem, 0.5rem + 0.5vw, 0.875rem); /* 12–14px */
+  }
+}
+
+html {
+  @apply scroll-smooth;
+  scroll-padding-top: 64px;
+}
+
+@media (min-width: 1024px) {
+  html {
+    scroll-padding-top: 84px;
   }
 }
 

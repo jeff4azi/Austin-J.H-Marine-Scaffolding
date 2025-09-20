@@ -1,9 +1,12 @@
 import { useState, useEffect } from "react";
 import AJH_logo from "../assets/images/AJH_logo.png";
+import { sections } from "../data";
 
 const Nav = () => {
-
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isNavOverlayOpen, setIsNavOverlayOpen] = useState(false);
+  const [active, setActive] = useState("home");
+
 
   useEffect(() => {
     const handleScroll = () => {
@@ -14,22 +17,44 @@ const Nav = () => {
       }
     };
 
+    setActive(`${localStorage.getItem("active-link") ? localStorage.getItem("active-link") : 'home'}`)
+
     window.addEventListener("scroll", handleScroll);
 
     // cleanup on unmount
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+ 
+  const linksEl = sections.map((section) => (
+    <li>
+      <a
+        key={section}
+        onClick={() => {
+          setIsNavOverlayOpen(!isNavOverlayOpen);
+          setActive(section);
+          localStorage.setItem("active-link", section)
+        }}
+        className={`${active == section ? "link-active" : ""}`}
+        href={`#${section}`}
+      >
+        {section.charAt(0).toUpperCase() + section.slice(1)}
+      </a>
+    </li>
+  ));
 
-
-
-  const [isNavOverlayOpen, setIsNavOverlayOpen] = useState(false);
   return (
-    <header className={`w-full fixed top-0 left-0 right-0 z-50 duration-300 ${isScrolled ? "bg-light shadow-md" : "lg:bg-transparent"}`}>
+    <header
+      className={`w-full fixed top-0 left-0 right-0 z-50 duration-300 ${
+        isScrolled ? "bg-light shadow-md" : "lg:bg-transparent"
+      }`}
+    >
       <nav className="container mx-auto px-6 md:px-16 py-3 md:py-3 flex justify-between items-center lg:gap-15 text-fluid-p">
         <img
           src={AJH_logo}
           alt="AJH Logo Maring Scaffolding"
-          className={`${isScrolled ? "w-[40px] md:w-[60px]" : "w-[50px] md:w-[80px]"} hover:rotate-360 duration-300 ease-in-out`}
+          className={`${
+            isScrolled ? "w-[40px] md:w-[60px]" : "w-[50px] md:w-[80px]"
+          } hover:rotate-360 duration-300 ease-in-out`}
         />
 
         <ul
@@ -38,24 +63,7 @@ const Nav = () => {
           } lg:static lg:translate-0 lg:flex-row lg:h-fit lg:font-normal lg:text-nowrap lg:w-full lg:justify-between lg:backdrop-blur-none lg:bg-transparent`}
         >
           <ul className="gap-5 flex flex-col items-center justify-center lg:justify-start h-[80vh] lg:flex-row lg:w-full lg:h-fit">
-            <li>
-              <a className="link-active" href="/">Home</a>
-            </li>
-            <li>
-              <a href="/services">Services</a>
-            </li>
-            <li>
-              <a href="/projects">Projects</a>
-            </li>
-            <li>
-              <a href="/about">About</a>
-            </li>
-            <li>
-              <a href="/testimonials">Testimonials</a>
-            </li>
-            <li>
-              <a href="/quote">Quote</a>
-            </li>
+            {linksEl}
           </ul>
 
           <div className="flex items-center gap-1 absolute bottom-10 lg:static">

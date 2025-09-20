@@ -20,7 +20,7 @@ const Projects = () => {
           </div>
         </div>
         <div className="container mx-auto px-6 md:px-16 ">
-          <div className="border-y-2 border-gray-400 py-8 lg:py-13 w-full">
+          <div className="border-y-2 border-gray-500/30 py-8 lg:py-13 w-full">
             <section className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
               {projectCardEl}
             </section>
