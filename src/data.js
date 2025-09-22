@@ -1,19 +1,81 @@
 /* import images */
 import project1 from "./assets/images/bottom-view-skyscraper-scaffolding.jpg"
-import project2 from "./assets/images/bottom-view-skyscraper-scaffolding.jpg"
-import project3 from "./assets/images/bottom-view-skyscraper-scaffolding.jpg"
+import project2 from "./assets/images/skyscraper-scaffolding.jpg"
+/* import project3 from "./assets/images/bottom-view-skyscraper-scaffolding.jpg"
 import project4 from "./assets/images/bottom-view-skyscraper-scaffolding.jpg"
 import project5 from "./assets/images/bottom-view-skyscraper-scaffolding.jpg"
 import project6 from "./assets/images/bottom-view-skyscraper-scaffolding.jpg"
+  */
+import client_1 from "./assets/images/client-1.webp"
+import client_2 from "./assets/images/client-2.webp"
+import client_3 from "./assets/images/client-3.jpg"
 
 export const projects = [
-  {id: 1, img: project1, title: "Tower", description: ""},
-  {id: 2, img: project2, title: "", description: ""},
-  {id: 3, img: project3, title: "", description: ""},
-  {id: 4, img: project4, title: "", description: ""},
-  {id: 5, img: project5, title: "", description: ""},
-  {id: 6, img: project6, title: "", description: ""},
-]
+  {
+    id: 1,
+    title: "Tower",
+    description:
+      "A really beautiful tower designed by our best architect Leonardo da Vinci hehehe",
+    mediaType: "image",
+    mediaSrc: project1,
+  },
+  {
+    id: 2,
+    title: "Sky Scraper",
+    description:
+      "A really beautiful sky scraper designed by our best architect Leonardo da Vinci hehehe",
+    mediaType: "image",
+    mediaSrc: project2,
+  },
+  {
+    id: 3,
+    title: "Tower",
+    description:
+      "A really beautiful tower designed by our best architect Leonardo da Vinci hehehe bla bla",
+    mediaType: "image",
+    mediaSrc: project1,
+  },
+  {
+    id: 4,
+    title: "Sky Scraper",
+    description:
+      "A really beautiful tower designed by our best architect Leonardo da Vinci hehehe",
+    mediaType: "image",
+    mediaSrc: project2,
+  },
+  {
+    id: 5,
+    title: "Tower",
+    description:
+      "A really beautiful tower designed by our best architect Leonardo da Vinci hehehe",
+    mediaType: "image",
+    mediaSrc: project1,
+  },
+  {
+    id: 6,
+    title: "Sky Scraper",
+    description:
+      "A really beautiful tower designed by our best architect Leonardo da Vinci hehehe",
+    mediaType: "image",
+    mediaSrc: project2,
+  },
+  {
+    id: 7,
+    title: "Tower",
+    description:
+      "A very so much undeniable really beautiful tower designed by our best architect Leonardo da Vinci hehehe",
+    mediaType: "image",
+    mediaSrc: project1,
+  },
+  {
+    id: 8,
+    title: "Sky Scraper",
+    description:
+      "A really beautiful tower designed by our best architect Leonardo da Vinci hehehe",
+    mediaType: "image",
+    mediaSrc: project2,
+  },
+];
 
 export const sections = ['home', 'services', 'projects', 'about', 'testimonials', 'quote']
 
@@ -43,7 +105,70 @@ export const services = [
 
 export const about_details = [
   {id: 1, number: 400, symbol: '+', details: "Successful projects"},
-  {id: 2, number: 11, symbol: '+', details: "Years of experience"},
+  {id: 2, number: 20, symbol: '+', details: "Years of experience"},
   {id: 3, number: 90, symbol: '+', details: "Happy clients"},
   {id: 4, number: 100, symbol: '%', details: "Client satisfaction"},
+]
+
+export const testimonials = [
+  {
+    id: 1,
+    text: "Austin J.H Technical Support Services Ltd provided exceptional scaffolding services for our recent construction project. Their team was professional, efficient, and ensured that all safety standards were met. We highly recommend their services to anyone in need of reliable scaffolding solutions.",
+    img: client_1,
+    position: "Customer",
+    bg_color: '#00AD5D',
+    text_color: '#111812',
+    name: "John Doe",
+  },
+  {
+    id: 2,
+    text: "Austin J.H Technical Support Services Ltd provided exceptional scaffolding services for our recent construction project. Their team was professional, efficient, and ensured that all safety standards were met. We highly recommend their services to anyone in need of reliable scaffolding solutions.",
+    img: client_2,
+    position: "Customer",
+    bg_color: '#fbfff4',
+    text_color: '#111812',
+    name: "Christina Lee",
+  },
+  {
+    id: 3,
+    text: "Austin J.H Technical Support Services Ltd provided exceptional scaffolding services for our recent construction project. Their team was professional, efficient, and ensured that all safety standards were met. We highly recommend their services to anyone in need of reliable scaffolding solutions.",
+    img: client_3,
+    position: "Director",
+    bg_color: '#111812',
+    text_color: '#fbfff4',
+    name: "Samantha Smith",
+  },
+  {
+    id: 1,
+    text: "Austin J.H Technical Support Services Ltd provided exceptional scaffolding services for our recent construction project. Their team was professional, efficient, and ensured that all safety standards were met. We highly recommend their services to anyone in need of reliable scaffolding solutions.",
+    img: client_1,
+    position: "Customer",
+    bg_color: '#00AD5D',
+    text_color: '#111812',
+    name: "John Doe",
+  },
+  {
+    id: 2,
+    text: "Austin J.H Technical Support Services Ltd provided exceptional scaffolding services for our recent construction project. Their team was professional, efficient, and ensured that all safety standards were met. We highly recommend their services to anyone in need of reliable scaffolding solutions.",
+    img: client_2,
+    position: "Customer",
+    bg_color: '#fbfff4',
+    text_color: '#111812',
+    name: "Christina Lee",
+  },
+  {
+    id: 3,
+    text: "Austin J.H Technical Support Services Ltd provided exceptional scaffolding services for our recent construction project. Their team was professional, efficient, and ensured that all safety standards were met. We highly recommend their services to anyone in need of reliable scaffolding solutions.",
+    img: client_3,
+    position: "Director",
+    bg_color: '#111812',
+    text_color: '#fbfff4',
+    name: "Samantha Smith",
+  },
+]
+
+export const social_icons = [
+  "M187.58,144.84l-32-16a8,8,0,0,0-8,.5l-14.69,9.8a40.55,40.55,0,0,1-16-16l9.8-14.69a8,8,0,0,0,.5-8l-16-32A8,8,0,0,0,104,64a40,40,0,0,0-40,40,88.1,88.1,0,0,0,88,88,40,40,0,0,0,40-40A8,8,0,0,0,187.58,144.84ZM152,176a72.08,72.08,0,0,1-72-72A24,24,0,0,1,99.29,80.46l11.48,23L101,118a8,8,0,0,0-.73,7.51,56.47,56.47,0,0,0,30.15,30.15A8,8,0,0,0,138,155l14.61-9.74,23,11.48A24,24,0,0,1,152,176ZM128,24A104,104,0,0,0,36.18,176.88L24.83,210.93a16,16,0,0,0,20.24,20.24l34.05-11.35A104,104,0,1,0,128,24Zm0,192a87.87,87.87,0,0,1-44.06-11.81,8,8,0,0,0-6.54-.67L40,216,52.47,178.6a8,8,0,0,0-.66-6.54A88,88,0,1,1,128,216Z",
+  "M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm8,191.63V152h24a8,8,0,0,0,0-16H136V112a16,16,0,0,1,16-16h16a8,8,0,0,0,0-16H152a32,32,0,0,0-32,32v24H96a8,8,0,0,0,0,16h24v63.63a88,88,0,1,1,16,0Z",
+  "M214.75,211.71l-62.6-98.38,61.77-67.95a8,8,0,0,0-11.84-10.76L143.24,99.34,102.75,35.71A8,8,0,0,0,96,32H48a8,8,0,0,0-6.75,12.3l62.6,98.37-61.77,68a8,8,0,1,0,11.84,10.76l58.84-64.72,40.49,63.63A8,8,0,0,0,160,224h48a8,8,0,0,0,6.75-12.29ZM164.39,208,62.57,48h29L193.43,208Z"
 ]

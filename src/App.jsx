@@ -6,11 +6,29 @@ import Projects from "./sections/Projects";
 import Testimonials from "./sections/Testimonials";
 import Quote from "./sections/Quote";
 import Footer from "./sections/Footer";
+import ContactOverlay from "./components/ContactOverlay";
 
-const shit = () => {
+/* context */
+import { OverlayProvider } from "./context/OverlayContext";
+import { useOverlay } from "./context/OverlayContext";
+
+const App = () => {
   return (
-    <main>
+    <OverlayProvider>
+      <MainContent />
+    </OverlayProvider>
+  );
+};
+
+// separate component inside provider so useOverlay works
+const MainContent = () => {
+  const { isOpen, setIsOpen } = useOverlay();
+
+  return (
+    <main className="relative">
       <Nav />
+      <ContactOverlay isOpen={isOpen} onClose={() => setIsOpen(false)} />
+
       <div id="home">
         <Hero />
       </div>
@@ -36,4 +54,4 @@ const shit = () => {
   );
 };
 
-export default shit;
+export default App;

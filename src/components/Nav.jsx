@@ -1,11 +1,16 @@
 import { useState, useEffect } from "react";
 import AJH_logo from "../assets/images/AJH_logo.png";
 import { sections } from "../data";
+import GetQuoteButton from "./GetQuoteButton";
+
+import { useOverlay } from "../context/OverlayContext";
 
 const Nav = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isNavOverlayOpen, setIsNavOverlayOpen] = useState(false);
   const [active, setActive] = useState("home");
+
+  const {setIsOpen} = useOverlay()
 
 
   useEffect(() => {
@@ -51,7 +56,7 @@ const Nav = () => {
       <nav className="container mx-auto px-6 md:px-16 py-3 md:py-3 flex justify-between items-center lg:gap-15 text-fluid-p">
         <img
           src={AJH_logo}
-          alt="AJH Logo Maring Scaffolding"
+          alt="AJH Logo Marine Scaffolding"
           className={`${
             isScrolled ? "w-[40px] md:w-[60px]" : "w-[50px] md:w-[80px]"
           } hover:rotate-360 duration-300 ease-in-out`}
@@ -67,20 +72,10 @@ const Nav = () => {
           </ul>
 
           <div className="flex items-center gap-1 absolute bottom-10 lg:static">
-            <button className="border px-3 py-1 rounded-full font-normal text-black active:bg-accent/90 duration-300 hover:bg-accent/50">
+            <button className="text-fluid-p px-3 py-1 rounded-full font-normal bg-accent text-black active:bg-accent/30 active:scale-95 duration-300 hover:bg-accent/70 hover:scale-105" onClick={() => setIsOpen(true)}>
               Contact Us
             </button>
-            <button className="border p-2 rounded-full text-black  active:bg-accent/90 duration-300 hover:bg-accent/50">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="size-4 rotate-180"
-                height="32"
-                fill="currentColor"
-                viewBox="0 0 256 256"
-              >
-                <path d="M197.66,69.66,83.31,184H168a8,8,0,0,1,0,16H64a8,8,0,0,1-8-8V88a8,8,0,0,1,16,0v84.69L186.34,58.34a8,8,0,0,1,11.32,11.32Z"></path>
-              </svg>
-            </button>
+            <GetQuoteButton size={4} border={true}/>
           </div>
         </ul>
 

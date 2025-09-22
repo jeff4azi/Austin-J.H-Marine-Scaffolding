@@ -22,7 +22,7 @@ const About = () => {
         <div className="border-y-2 border-gray-400 py-8 lg:py-13 w-full">
           <div className="w-full space-y-5 lg:space-y-10 ">
             <img src={img} alt="offshore platform" className="w-full object-cover rounded" />
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eligendi eius fugiat corrupti distinctio mollitia veritatis perspiciatis debitis deleniti labore, ipsum, hic enim. Dicta, veritatis eos cumque aliquam laboriosam incidunt porro. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maxime rem praesentium magnam, temporibus culpa ipsa veniam sit iusto officiis, harum magni alias eum dignissimos? Nostrum suscipit vitae odio? Suscipit, dolorem?</p>
+            <p>Austin J.H Technical Support Services Ltd. is a Lagos-based scaffolding company with over 20 years of hands-on experience in the industry. Specializing in industrial projects, we pride ourselves on delivering reliable scaffolding solutions that put safety first at every stage. Our team is made up of highly skilled professionals with the manpower and expertise to take on projects of any scale, ensuring efficiency, stability, and peace of mind for our clients. Backed by decades of practical knowledge and a strong commitment to excellence, we continue to build lasting relationships while supporting the success of construction and engineering projects across Nigeria.</p>
           </div>
           <section className="w-full grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 xl:place-items-center">
             {aboutDetailsEl}

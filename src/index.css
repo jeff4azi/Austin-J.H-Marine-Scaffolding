@@ -22,7 +22,7 @@
     font-size: clamp(1.5rem, 0.5rem + 2.5vw, 3rem);
   }
   .text-fluid-h3 {
-    @apply font-heading font-semibold md:font-medium;
+    @apply font-heading font-medium;
     font-size: clamp(1.25rem, 0.5rem + 2vw, 2rem);
   }
   .text-fluid-p {
@@ -64,4 +64,17 @@ section {
 
 .link-active {
   @apply text-accent font-semibold;
+}
+
+.swiper-pagination-bullet {
+  background-color: theme("colors.accent") !important;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: theme("colors.accent") !important;
+  transform: scale(1.05) !important;
+}
+
+::selection {
+  @apply bg-accent/50;
 }
