@@ -1,10 +1,11 @@
 import { Swiper, SwiperSlide } from "swiper/react";
+import { motion } from "framer-motion";
 import { Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 
 import TestimonialCard from "../components/TestimonialCard";
-import { testimonials } from "../data";
+import { testimonial_text, testimonials, parentVariant, childVariant } from "../data";
 
 const Testimonials = () => {
   return (
@@ -18,9 +19,21 @@ const Testimonials = () => {
             Testimonials
           </span>
         </div>
-        <h2 className="text-fluid-h1 mb-5 lg:mb-10 w-[95%] lg:w-[75%]">
-          What Our Clients Say About Us
-        </h2>
+        <motion.h2
+          variants={parentVariant}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="text-fluid-h1 mb-5 lg:mb-10 w-[95%] lg:w-[75%]"
+        >
+          {testimonial_text.split(" ").map((word, i) => (
+            <>
+              <motion.span key={i} variants={childVariant}>
+                {word + " "}
+              </motion.span>
+            </>
+          ))}
+        </motion.h2>
       </div>
 
     <div className="container mx-auto px-6 md:px-16 w-full">

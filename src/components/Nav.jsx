@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import AJH_logo from "../assets/images/AJH_logo.png";
 import { sections } from "../data";
 import GetQuoteButton from "./GetQuoteButton";
+import { motion } from "framer-motion";
 
 import { useOverlay } from "../context/OverlayContext";
 
@@ -10,8 +11,7 @@ const Nav = () => {
   const [isNavOverlayOpen, setIsNavOverlayOpen] = useState(false);
   const [active, setActive] = useState("home");
 
-  const {setIsOpen} = useOverlay()
-
+  const { setIsOpen } = useOverlay();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -22,33 +22,42 @@ const Nav = () => {
       }
     };
 
-    setActive(`${localStorage.getItem("active-link") ? localStorage.getItem("active-link") : 'home'}`)
+    setActive(
+      `${
+        localStorage.getItem("active-link")
+          ? localStorage.getItem("active-link")
+          : "home"
+      }`
+    );
 
     window.addEventListener("scroll", handleScroll);
 
     // cleanup on unmount
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
- 
+
   const linksEl = sections.map((section) => (
-    <li>
+    <motion.li key={section}>
       <a
-        key={section}
         onClick={() => {
           setIsNavOverlayOpen(!isNavOverlayOpen);
           setActive(section);
-          localStorage.setItem("active-link", section)
+          localStorage.setItem("active-link", section);
         }}
         className={`${active == section ? "link-active" : ""}`}
         href={`#${section}`}
       >
         {section.charAt(0).toUpperCase() + section.slice(1)}
       </a>
-    </li>
+    </motion.li>
   ));
 
   return (
-    <header
+    <motion.header
+      initial={{ opacity: 0, y: -20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 1, ease: "easeOut" }}
+      viewport={{ once: true }}
       className={`w-full fixed top-0 left-0 right-0 z-50 duration-300 ${
         isScrolled ? "bg-light shadow-md" : "lg:bg-transparent"
       }`}
@@ -67,15 +76,23 @@ const Nav = () => {
             isNavOverlayOpen ? "translate-x-0" : "translate-x-full"
           } lg:static lg:translate-0 lg:flex-row lg:h-fit lg:font-normal lg:text-nowrap lg:w-full lg:justify-between lg:backdrop-blur-none lg:bg-transparent`}
         >
-          <ul className="gap-5 flex flex-col items-center justify-center lg:justify-start h-[80vh] lg:flex-row lg:w-full lg:h-fit">
+          <ul
+            className="gap-5 flex flex-col items-center justify-center 
+             lg:flex-row lg:gap-8 lg:opacity-100 lg:translate-x-0 
+             lg:!transform-none lg:!transition-none
+             h-[80vh] lg:h-fit lg:w-full"
+          >
             {linksEl}
           </ul>
 
           <div className="flex items-center gap-1 absolute bottom-10 lg:static">
-            <button className="text-fluid-p px-3 py-1 rounded-full font-normal bg-accent text-black active:bg-accent/30 active:scale-95 duration-300 hover:bg-accent/70 hover:scale-105" onClick={() => setIsOpen(true)}>
+            <button
+              className="text-fluid-p px-3 py-1 rounded-full font-normal bg-accent text-black active:bg-accent/30 active:scale-95 duration-300 hover:bg-accent/70 hover:scale-105"
+              onClick={() => setIsOpen(true)}
+            >
               Contact Us
             </button>
-            <GetQuoteButton size={4} border={true}/>
+            <GetQuoteButton size={4} border={true} />
           </div>
         </ul>
 
@@ -107,7 +124,7 @@ const Nav = () => {
           )}
         </button>
       </nav>
-    </header>
+    </motion.header>
   );
 };
 

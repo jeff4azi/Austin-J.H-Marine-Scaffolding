@@ -1,5 +1,6 @@
 import ProjectCard from "../components/ProjectCard";
-import { projects } from "../data";
+import { motion } from "framer-motion";
+import { project_text, projects, parentVariant, childVariant } from "../data";
 
 const Projects = () => {
   return (
@@ -13,9 +14,21 @@ const Projects = () => {
             recent work
           </span>
         </div>
-        <div className="text-fluid-h1 mb-5 lg:mb-10 w-[95%] lg:w-[75%] text-light">
-          Take A Look At Our Latest Projects
-        </div>
+        <motion.div
+          variants={parentVariant}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="text-fluid-h1 mb-5 lg:mb-10 w-[95%] lg:w-[75%] text-light"
+        >
+          {project_text.split(" ").map((word, i) => (
+            <>
+              <motion.span key={i} variants={childVariant}>
+                {word + " "}
+              </motion.span>
+            </>
+          ))}
+        </motion.div>
       </div>
       <div className="container mx-auto px-6 md:px-16 ">
         <div className="border-t-2 border-gray-500/30 py-8 lg:py-13 w-full">

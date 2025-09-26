@@ -1,9 +1,17 @@
+import { motion } from "framer-motion";
 import GetQuoteButton from "./GetQuoteButton";
 
 // ProjectCard.jsx
 const ProjectCard = ({ title, description, mediaType, mediaSrc }) => {
   return (
-    <div className="w-full max-w-md space-y-4 roundedshadow-lg overflow-hidden text-light">
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      viewport={{ once: true, amount: 0.3 }}
+      id={title}
+      className="w-full max-w-md space-y-4 roundedshadow-lg overflow-hidden text-light hover:scale-105 duration-300"
+    >
       {/* Media Section */}
       <div className="w-full h-48 md:50 lg:h-64 xl:h-80">
         {mediaType === "video" ? (
@@ -37,7 +45,7 @@ const ProjectCard = ({ title, description, mediaType, mediaSrc }) => {
           <span>Get a quote</span> <GetQuoteButton size={4} />
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
