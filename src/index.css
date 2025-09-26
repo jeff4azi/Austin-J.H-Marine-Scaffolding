@@ -46,6 +46,11 @@ html {
   }
 }
 
+html {
+  @apply overflow-x-hidden;
+  font-family: var(--font-body);
+}
+
 body {
   @apply bg-light text-gray-600 overflow-x-hidden;
 }

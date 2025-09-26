@@ -1,4 +1,4 @@
-import heroImage1 from "../assets/images/zach-theo-guADzpF9pDI-unsplash.jpg";
+import heroImage1 from "../assets/images/offshore_platform_hero_image.webp"
 import GetQuoteButton from "../components/GetQuoteButton";
 import { motion } from "framer-motion";
 

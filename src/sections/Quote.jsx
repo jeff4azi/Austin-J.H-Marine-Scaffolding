@@ -1,4 +1,5 @@
 import { Swiper, SwiperSlide } from "swiper/react";
+import { motion } from "framer-motion";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
@@ -6,8 +7,10 @@ import "swiper/css/pagination";
 /* images */
 import business_card from "../assets/images/AJH-business-card.jpg";
 import business_card_back from "../assets/images/AJH-business-card-back.jpg";
-import beam_image from "../assets/images/beam-bars-scaffolds.jpg";
+import beam_image from "../assets/images/beam-bars-scaffolds.webp";
 import GetQuoteButton from "../components/GetQuoteButton";
+
+import { cardVariant } from "../data";
 
 const Quote = () => {
   return (
@@ -22,17 +25,23 @@ const Quote = () => {
           1024: { slidesPerView: 2.1 }, // 3 per view on desktop
         }}
         className="flex pl-8 lg:pl-13 w-full"
-        style={{paddingTop: 10, paddingBottom: 10}}
+        style={{ paddingTop: 10, paddingBottom: 10 }}
       >
         <SwiperSlide key={1}>
-          <img
+          <motion.img
+            variants={cardVariant}
+            initial="hidden"
+            whileInView="visible"
             src={business_card}
             alt="AJH Business Card"
             className="border-2 border-dark hover:scale-105 duration-300"
           />
         </SwiperSlide>
         <SwiperSlide key={1}>
-          <img
+          <motion.img
+            variants={cardVariant}
+            initial="hidden"
+            whileInView="visible"
             src={business_card_back}
             alt="AJH Business Card Back"
             className="border-2 border-dark hover:scale-105 duration-300"
@@ -48,7 +57,10 @@ const Quote = () => {
           }}
           key={1}
         >
-          <img
+          <motion.img
+            variants={cardVariant}
+            initial="hidden"
+            whileInView="visible"
             src={business_card_back}
             alt="AJH Business Card Back"
             className="border-2 border-dark hover:scale-105 duration-300"

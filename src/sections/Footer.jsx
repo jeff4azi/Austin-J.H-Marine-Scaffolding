@@ -79,7 +79,12 @@ const Footer = () => {
         </motion.div>
       </div>
       <div className="container mx-auto px-6 md:px-16">
-        <div className="border-y-2 border-gray-500/30 py-1 lg:py-3 w-full flex justify-between items-center">
+        <motion.div
+        initial={{ y: 50, opacity: 0 }}
+        whileInView={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.5 }}
+        viewport={{ once: true }}
+        className="border-y-2 border-gray-500/30 py-1 lg:py-3 w-full flex justify-between items-center">
           <p className="text-fluid-small">
             © <date>{new Date().getFullYear()}</date> Austin J.H Technical
             Support Services Ltd.
@@ -87,7 +92,7 @@ const Footer = () => {
           <span className="hidden md:block text-fluid-small text-fluid-small">
             Privacy Policy
           </span>
-        </div>
+        </motion.div>
       </div>
     </>
   );

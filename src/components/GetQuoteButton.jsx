@@ -3,7 +3,7 @@ import { social_icons } from "../data";
 import { motion } from "framer-motion";
 
 const GetQuoteButton = ({ size = 6, border }) => {
-  const whatsappIcon = { path: social_icons[0], class: "" };
+  const whatsappIcon = { path: social_icons[0].path, class: "" };
   const arrowIcon = {
     path: "M197.66,69.66,83.31,184H168a8,8,0,0,1,0,16H64a8,8,0,0,1-8-8V88a8,8,0,0,1,16,0v84.69L186.34,58.34a8,8,0,0,1,11.32,11.32Z",
     class: "rotate-180",
@@ -18,17 +18,13 @@ const GetQuoteButton = ({ size = 6, border }) => {
 
   const [activePath, setActivePath] = useState(arrowIcon);
 
-  // WhatsApp link with simple pre-filled message
-  const waLink =
-    "https://wa.me/2348134497640?text=Hello%2C%20I%20would%20like%20to%20request%20a%20quote%20for%20your%20services.";
-
   return (
     <motion.a
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 1, ease: "easeInOut" }}
       viewport={{ once: true }}
-      href={waLink}
+      href={social_icons[0].link}
       target="_blank"
       rel="noopener noreferrer"
       className={`p-2 rounded-full text-dark ${

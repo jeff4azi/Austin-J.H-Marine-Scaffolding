@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import img from "../assets/images/offshore-plaform.jpg";
+import img from "../assets/images/offshore-plaform.webp";
 import AboutDetails from "../components/AboutDetails";
 import {
   about_details,

@@ -1,7 +1,7 @@
 const DOMAIN_NAME = "http://localhost:5173/";
 
 /* import images */
-import project1 from "./assets/images/bottom-view-skyscraper-scaffolding.jpg";
+import project1 from "./assets/images/sky-scraper-scaffolding.jpg";
 import project2 from "./assets/images/skyscraper-scaffolding.jpg";
 /* import project3 from "./assets/images/bottom-view-skyscraper-scaffolding.jpg"
 import project4 from "./assets/images/bottom-view-skyscraper-scaffolding.jpg"
@@ -104,6 +104,16 @@ export const childVariant = {
     y: 0,
     opacity: 1,
     transition: { duration: 0.8, ease: "easeOut" },
+  },
+};
+
+export const cardVariant = {
+  hidden: { opacity: 0, y: 40, scale: 0.95 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: { duration: 0.6, ease: "easeOut" },
   },
 };
 
@@ -210,7 +220,7 @@ export const testimonials = [
 export const social_icons = [
   {
     path: "M187.58,144.84l-32-16a8,8,0,0,0-8,.5l-14.69,9.8a40.55,40.55,0,0,1-16-16l9.8-14.69a8,8,0,0,0,.5-8l-16-32A8,8,0,0,0,104,64a40,40,0,0,0-40,40,88.1,88.1,0,0,0,88,88,40,40,0,0,0,40-40A8,8,0,0,0,187.58,144.84ZM152,176a72.08,72.08,0,0,1-72-72A24,24,0,0,1,99.29,80.46l11.48,23L101,118a8,8,0,0,0-.73,7.51,56.47,56.47,0,0,0,30.15,30.15A8,8,0,0,0,138,155l14.61-9.74,23,11.48A24,24,0,0,1,152,176ZM128,24A104,104,0,0,0,36.18,176.88L24.83,210.93a16,16,0,0,0,20.24,20.24l34.05-11.35A104,104,0,1,0,128,24Zm0,192a87.87,87.87,0,0,1-44.06-11.81,8,8,0,0,0-6.54-.67L40,216,52.47,178.6a8,8,0,0,0-.66-6.54A88,88,0,1,1,128,216Z",
-    url: "https://wa.me/2348134497640?text=Hello%2C%20I%20would%20like%20to%20request%20a%20quote%20for%20your%20services.",
+    url: "https://wa.me/2349079235568?text=Hello%2C%20I%20would%20like%20to%20request%20a%20quote%20for%20your%20services.",
   },
   {
     path: "M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm8,191.63V152h24a8,8,0,0,0,0-16H136V112a16,16,0,0,1,16-16h16a8,8,0,0,0,0-16H152a32,32,0,0,0-32,32v24H96a8,8,0,0,0,0,16h24v63.63a88,88,0,1,1,16,0Z",
