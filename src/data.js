@@ -1,83 +1,15 @@
-const DOMAIN_NAME = "http://localhost:5173/";
+export const DATABASE_PASSWORD = "f7AtL2rcA8ZTXvjF";
+export const PROJECT_URL = "https://zdeiqrknlqyyotlvxztf.supabase.co";
+export const SUPABASE_ANON_KEY =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpkZWlxcmtubHF5eW90bHZ4enRmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTkwNzg3ODgsImV4cCI6MjA3NDY1NDc4OH0.SyexH1PuQeo3ACV6QhuWNUnwxsFSR2p3C9bfa912scc";
+export const EMAIL_KEY = "qcEkIpqrNmtMunprj";
 
-/* import images */
-import project1 from "./assets/images/sky-scraper-scaffolding.jpg";
-import project2 from "./assets/images/skyscraper-scaffolding.jpg";
-/* import project3 from "./assets/images/bottom-view-skyscraper-scaffolding.jpg"
-import project4 from "./assets/images/bottom-view-skyscraper-scaffolding.jpg"
-import project5 from "./assets/images/bottom-view-skyscraper-scaffolding.jpg"
-import project6 from "./assets/images/bottom-view-skyscraper-scaffolding.jpg"
-  */
 import client_1 from "./assets/images/client-1.webp";
 import client_2 from "./assets/images/client-2.webp";
 import client_3 from "./assets/images/client-3.jpg";
 
-export const projects = [
-  {
-    id: 1,
-    title: "Tower",
-    description:
-      "A really beautiful tower designed by our best architect Leonardo da Vinci hehehe",
-    mediaType: "image",
-    mediaSrc: project1,
-  },
-  {
-    id: 2,
-    title: "Sky Scraper",
-    description:
-      "A really beautiful sky scraper designed by our best architect Leonardo da Vinci hehehe",
-    mediaType: "image",
-    mediaSrc: project2,
-  },
-  {
-    id: 3,
-    title: "Tower",
-    description:
-      "A really beautiful tower designed by our best architect Leonardo da Vinci hehehe bla bla",
-    mediaType: "image",
-    mediaSrc: project1,
-  },
-  {
-    id: 4,
-    title: "Sky Scraper",
-    description:
-      "A really beautiful tower designed by our best architect Leonardo da Vinci hehehe",
-    mediaType: "image",
-    mediaSrc: project2,
-  },
-  {
-    id: 5,
-    title: "Tower",
-    description:
-      "A really beautiful tower designed by our best architect Leonardo da Vinci hehehe",
-    mediaType: "image",
-    mediaSrc: project1,
-  },
-  {
-    id: 6,
-    title: "Sky Scraper",
-    description:
-      "A really beautiful tower designed by our best architect Leonardo da Vinci hehehe",
-    mediaType: "image",
-    mediaSrc: project2,
-  },
-  {
-    id: 7,
-    title: "Tower",
-    description:
-      "A very so much undeniable really beautiful tower designed by our best architect Leonardo da Vinci hehehe",
-    mediaType: "image",
-    mediaSrc: project1,
-  },
-  {
-    id: 8,
-    title: "Sky Scraper",
-    description:
-      "A really beautiful tower designed by our best architect Leonardo da Vinci hehehe",
-    mediaType: "image",
-    mediaSrc: project2,
-  },
-];
+export const email_template_id = "template_ksm60jb";
+export const service_id = "service_i2mqi27";
 
 export const hero_text = "Quality Scaffolding Solutions";
 export const service_text = "A Comprehensive Set Of Services";
@@ -86,6 +18,7 @@ export const about_text =
 export const project_text = "Take A Look At Our Latest Projects";
 export const testimonial_text = "What Our Clients Say About Us";
 export const quote_text = "Ready To Get Started?";
+export const admin_login_text = "Admin Login";
 
 export const parentVariant = {
   hidden: { opacity: 1, x: 40 }, // keep parent visible so it doesn't blink

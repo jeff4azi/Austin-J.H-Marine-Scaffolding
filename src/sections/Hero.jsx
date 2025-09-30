@@ -1,4 +1,4 @@
-import heroImage1 from "../assets/images/offshore_platform_hero_image.webp"
+import heroImage1 from "../assets/images/offshore_platform_hero_image.webp";
 import GetQuoteButton from "../components/GetQuoteButton";
 import { motion } from "framer-motion";
 
@@ -7,8 +7,6 @@ import { hero_text, parentVariant, childVariant } from "../data";
 
 const Hero = () => {
   const { setIsOpen } = useOverlay();
-
-  
 
   return (
     <section
@@ -34,15 +32,13 @@ const Hero = () => {
               className="font-heading text-gray-950 text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl font-bold tracking-tight leading-tight pointer-events-none select-none"
             >
               {hero_text.split(" ").map((word, i) => (
-                <>
-                  <motion.span
-                    key={i}
-                    variants={childVariant}
-                    className="inline-block mr-3"
-                  >
-                    {word}
-                  </motion.span> <br />
-                </>
+                <motion.span
+                  key={i}
+                  variants={childVariant}
+                  className="block mr-3"
+                >
+                  {word} 
+                </motion.span>
               ))}
             </motion.div>
 
@@ -61,6 +57,9 @@ const Hero = () => {
             </div>
 
             <motion.div
+              drag
+              dragConstraints={{ top: -400, bottom: 10, left: -100, right: 5 }}
+              dragElastic={0.2}
               initial={{ opacity: 0, x: 20, scale: 0.7 }}
               whileInView={{ opacity: 1, x: 0, scale: 1 }}
               transition={{ duration: 1, ease: "easeInOut" }}

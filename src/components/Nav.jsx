@@ -87,7 +87,7 @@ const Nav = () => {
 
           <div className="flex items-center gap-1 absolute bottom-10 lg:static">
             <button
-              className="text-fluid-p px-3 py-1 rounded-full font-normal bg-accent text-black active:bg-accent/30 active:scale-95 duration-300 hover:bg-accent/70 hover:scale-105"
+              className="text-fluid-p px-3 py-1 rounded-full font-normal bg-accent text-black active:bg-accent/30 active:scale-95 duration-300 hover:bg-accent/70 hover:scale-105 shadow-md"
               onClick={() => setIsOpen(true)}
             >
               Contact Us

@@ -2,21 +2,29 @@ import { motion } from "framer-motion";
 import GetQuoteButton from "./GetQuoteButton";
 
 // ProjectCard.jsx
-const ProjectCard = ({ title, description, mediaType, mediaSrc }) => {
+const ProjectCard = ({
+  id,
+  name,
+  description,
+  mediaType,
+  url,
+  admin = false,
+  onDelete,
+}) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
       viewport={{ once: true, amount: 0.3 }}
-      id={title}
-      className="w-full max-w-md space-y-4 roundedshadow-lg overflow-hidden text-light hover:scale-105 duration-300"
+      id={id}
+      className="w-full max-w-md space-y-4 rounded shadow-lg overflow-hidden text-light hover:scale-105 duration-300"
     >
       {/* Media Section */}
-      <div className="w-full h-48 md:50 lg:h-64 xl:h-80">
+      <div className="w-full h-48 md:h-56 lg:h-64 xl:h-80">
         {mediaType === "video" ? (
           <video
-            src={mediaSrc}
+            src={url}
             autoPlay
             loop
             muted
@@ -26,8 +34,8 @@ const ProjectCard = ({ title, description, mediaType, mediaSrc }) => {
           />
         ) : (
           <img
-            src={mediaSrc}
-            alt={title || "Project media"}
+            src={url}
+            alt={name || "Project media"}
             className="w-full h-full object-cover"
           />
         )}
@@ -37,13 +45,16 @@ const ProjectCard = ({ title, description, mediaType, mediaSrc }) => {
       <div className="space-y-2 border-b-2 border-b-gray-500/50 flex flex-col justify-between">
         <div>
           <div className="text-lg font-semibold text-fluid-h3 text-light">
-            {title}
+            {name}
           </div>
           <p className="text-fluid-small line-clamp-2">{description}</p>
         </div>
         <div className="mb-5 flex items-center gap-3">
           <span>Get a quote</span> <GetQuoteButton size={4} />
         </div>
+        {admin && (
+          <button onClick={onDelete} className="bg-red-500 py-1 px-3 text-light">Delete</button>
+        )}
       </div>
     </motion.div>
   );

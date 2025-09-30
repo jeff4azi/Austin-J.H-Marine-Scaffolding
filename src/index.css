@@ -80,6 +80,10 @@ section {
   transform: scale(1.05) !important;
 }
 
+.active {
+  @apply text-accent
+}
+
 ::selection {
   @apply bg-accent/50;
 }

@@ -37,7 +37,7 @@ const Quote = () => {
             className="border-2 border-dark hover:scale-105 duration-300"
           />
         </SwiperSlide>
-        <SwiperSlide key={1}>
+        <SwiperSlide key={2}>
           <motion.img
             variants={cardVariant}
             initial="hidden"
@@ -55,7 +55,7 @@ const Quote = () => {
             justifyContent: "center",
             overflow: "hidden",
           }}
-          key={1}
+          key={3}
         >
           <motion.img
             variants={cardVariant}

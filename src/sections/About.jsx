@@ -30,11 +30,9 @@ const About = () => {
           className="text-fluid-h1 mb-5 lg:mb-10 w-[95%] lg:w-[75%]"
         >
           {about_text.split(" ").map((word, i) => (
-            <>
-              <motion.span key={i} variants={childVariant}>
-                {word + " "}
-              </motion.span>
-            </>
+            <motion.span key={i} variants={childVariant}>
+              {word + " "}
+            </motion.span>
           ))}
         </motion.h2>
       </div>

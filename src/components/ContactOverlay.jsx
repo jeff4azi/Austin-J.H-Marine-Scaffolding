@@ -1,19 +1,69 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import emailjs from "@emailjs/browser";
+import { EMAIL_KEY } from "../data";
+
+import { service_id, email_template_id } from "../data";
+import { supabase } from "../supabaseClient"; 
 
 const ContactOverlay = ({ isOpen, onClose }) => {
   const [isFocused, setIsFocused] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
 
   if (!isOpen) return null;
 
   const isSmallDevice =
     typeof window !== "undefined" ? window.innerWidth < 768 : false;
 
-  const handleSubmit = () => {
-    setSubmitted(true); // show thank-you immediately
-    // form will still submit naturally to FormSubmit
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsLoading(true);
+
+    try {
+      // 1️⃣ Send email
+      await emailjs.send(
+        service_id,
+        email_template_id,
+        {
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          time: new Date().toLocaleString(),
+        },
+        EMAIL_KEY
+      );
+
+      // 2️⃣ Save to Supabase "messages" table
+      const { error } = await supabase.from("messages").insert([
+        {
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+        },
+      ]);
+
+      if (error) {
+        console.error("❌ Supabase insert failed:", error.message);
+      }
+
+      setSubmitted(true);
+      setIsLoading(false);
+      setFormData({ name: "", email: "", message: "" });
+    } catch (err) {
+      console.error("❌ Failed:", err);
+      setIsLoading(false);
+      alert("Something went wrong. Please try again later.");
+    }
   };
 
   return (
@@ -23,11 +73,7 @@ const ContactOverlay = ({ isOpen, onClose }) => {
       exit={{ opacity: 0 }}
       className="fixed inset-0 bg-black/60 flex items-center justify-center z-50"
     >
-      <iframe name="hidden" className="hidden"></iframe>
       <motion.form
-        action="https://formsubmit.co/58936c73ce3aefb0472f0526e39a22fb"
-        method="POST"
-        target="hidden"
         onSubmit={handleSubmit}
         initial={{ y: 50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
@@ -35,7 +81,6 @@ const ContactOverlay = ({ isOpen, onClose }) => {
         style={{ translateY: isFocused && isSmallDevice ? -50 : 0 }}
         className="bg-white p-8 rounded-xl shadow-xl w-11/12 max-w-md flex flex-col gap-4"
       >
-        
         {!submitted ? (
           <>
             <h2 className="text-2xl text-fluid-h1">Contact Us</h2>
@@ -43,6 +88,8 @@ const ContactOverlay = ({ isOpen, onClose }) => {
             <input
               type="text"
               name="name"
+              value={formData.name}
+              onChange={handleChange}
               placeholder="Your Name"
               required
               onFocus={() => setIsFocused(true)}
@@ -52,6 +99,8 @@ const ContactOverlay = ({ isOpen, onClose }) => {
             <input
               type="email"
               name="email"
+              value={formData.email}
+              onChange={handleChange}
               placeholder="Your Email"
               required
               onFocus={() => setIsFocused(true)}
@@ -60,6 +109,8 @@ const ContactOverlay = ({ isOpen, onClose }) => {
             />
             <textarea
               name="message"
+              value={formData.message}
+              onChange={handleChange}
               placeholder="Your Message"
               required
               onFocus={() => setIsFocused(true)}
@@ -67,27 +118,22 @@ const ContactOverlay = ({ isOpen, onClose }) => {
               className="border border-gray-300 rounded p-2 outline-1 outline-accent focus:outline-2 resize-none h-32"
             />
 
-            <input type="hidden" name="_captcha" value="false" />
-            <input type="hidden" name="_subject" value="AJH website client request" />
-
             <div className="flex flex-col gap-2">
               <button
                 type="submit"
                 className="bg-accent text-light rounded py-2 font-medium hover:bg-accent/50 active:scale-95 transition flex items-center justify-center gap-2"
-                onClick={() => setIsLoading(true)}
               >
-                Send
                 {isLoading ? (
-                  <div className="border border-light border-t-transparent animate-spin size-3 rounded-full"></div>
+                  <div className="border border-light border-t-transparent animate-spin size-4 rounded-full"></div>
                 ) : (
-                  ""
+                  "Send"
                 )}
               </button>
               <button
-                type="submit"
+                type="button"
                 onClick={() => {
-                  onClose()
-                  setIsLoading(false)
+                  onClose();
+                  setIsLoading(false);
                 }}
                 className="text-gray-500 hover:underline active:text-accent"
               >

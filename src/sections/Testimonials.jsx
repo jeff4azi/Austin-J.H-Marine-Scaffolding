@@ -5,7 +5,12 @@ import "swiper/css";
 import "swiper/css/pagination";
 
 import TestimonialCard from "../components/TestimonialCard";
-import { testimonial_text, testimonials, parentVariant, childVariant } from "../data";
+import {
+  testimonial_text,
+  testimonials,
+  parentVariant,
+  childVariant,
+} from "../data";
 
 const Testimonials = () => {
   return (
@@ -27,16 +32,14 @@ const Testimonials = () => {
           className="text-fluid-h1 mb-5 lg:mb-10 w-[95%] lg:w-[75%]"
         >
           {testimonial_text.split(" ").map((word, i) => (
-            <>
-              <motion.span key={i} variants={childVariant}>
-                {word + " "}
-              </motion.span>
-            </>
+            <motion.span key={i} variants={childVariant}>
+              {word + " "}
+            </motion.span>
           ))}
         </motion.h2>
       </div>
 
-    <div className="container mx-auto px-6 md:px-16 w-full">
+      <div className="container mx-auto px-6 md:px-16 w-full">
         <Swiper
           modules={[Pagination, Autoplay]}
           spaceBetween={150}
@@ -48,15 +51,24 @@ const Testimonials = () => {
             1024: { slidesPerView: 3 }, // 3 per view on desktop
           }}
           className="border-y-2 border-gray-400 w-full lg:px-20"
-          style={{paddingTop: 64, paddingBottom: 64, paddingLeft: 5, paddingRight: 5}}
+          style={{
+            paddingTop: 64,
+            paddingBottom: 64,
+            paddingLeft: 5,
+            paddingRight: 5,
+          }}
         >
-            {testimonials.map((testimonial) => (
-              <SwiperSlide key={testimonial.id} style={{width: 300}} breakpoints={{768: {style: {width: 1000}}}}>
-                <TestimonialCard {...testimonial} />
-              </SwiperSlide>
-            ))}
+          {testimonials.map((testimonial) => (
+            <SwiperSlide
+              key={testimonial.id}
+              style={{ width: 300 }}
+              breakpoints={{ 768: { style: { width: 1000 } } }}
+            >
+              <TestimonialCard {...testimonial} />
+            </SwiperSlide>
+          ))}
         </Swiper>
-        </div>
+      </div>
     </>
   );
 };
