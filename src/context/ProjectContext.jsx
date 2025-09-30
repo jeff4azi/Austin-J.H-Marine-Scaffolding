@@ -23,7 +23,7 @@ export const ProjectsProvider = ({ children }) => {
   }, []);
 
   return (
-    <ProjectsContext.Provider value={{ projects, loading }}>
+    <ProjectsContext.Provider value={{ projects, loading, setProjects }}>
       {children}
     </ProjectsContext.Provider>
   );

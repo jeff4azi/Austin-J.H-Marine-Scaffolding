@@ -9,6 +9,7 @@ import EditProject from "./pages/EditProject";
 import AddProject from "./pages/AddProject";
 import { AdminPageRoutingProvider } from "./context/AdminPageRoutingContext";
 import { AuthProvider } from "./context/AuthContext";
+import { ProjectsProvider } from "./context/ProjectContext";
 import ProtectedRoute from "./components/ProtectedRoute";
 
 const App = () => {
@@ -16,6 +17,7 @@ const App = () => {
     <OverlayProvider>
       <AdminPageRoutingProvider>
         <AuthProvider>
+          <ProjectsProvider>
           <main className="relative">
             <Routes>
               <Route path="/" element={<Landing_Page />} />
@@ -30,12 +32,12 @@ const App = () => {
                 }
               >
                 <Route path="messages" element={<Messages />} />
-                <Route path="add-testimonial" element={<AddTestimonial />} />
                 <Route path="add-project" element={<AddProject />} />
                 <Route path="edit-project" element={<EditProject />} />
               </Route>
             </Routes>
           </main>
+          </ProjectsProvider>
         </AuthProvider>
       </AdminPageRoutingProvider>
     </OverlayProvider>

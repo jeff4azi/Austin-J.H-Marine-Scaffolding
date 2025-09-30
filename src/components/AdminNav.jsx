@@ -20,7 +20,7 @@ const icons = [
 const AdminNav = () => {
   const {activeLink, setActiveLink} = useAdminPageRouting();
   const navEl = icons.map((icon) => (
-    <Link to={`/admin-dashboard/${icon.url}`}>
+    <Link key={icon.path.slice(0, 5)} to={`/admin-dashboard/${icon.url}`}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="currentColor"

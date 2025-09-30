@@ -10,14 +10,13 @@ import Quote from "../sections/Quote";
 import Footer from "../sections/Footer";
 import ContactOverlay from "../components/ContactOverlay";
 
-import { ProjectsProvider } from "../context/ProjectContext";
 
 
 const Landing_Page = () => {
   const { isOpen, setIsOpen } = useOverlay();
 
   return (
-    <ProjectsProvider>
+    <>
       <Nav />
       <ContactOverlay isOpen={isOpen} onClose={() => setIsOpen(false)} />
 
@@ -42,7 +41,7 @@ const Landing_Page = () => {
       <section className="bg-dark text-gray-300">
         <Footer />
       </section>
-    </ProjectsProvider>
+    </>
   );
 };
 

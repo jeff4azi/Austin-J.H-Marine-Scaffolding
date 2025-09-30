@@ -12,6 +12,7 @@ const LogOutButton = ({ className }) => {
     } else {
       // Redirect to login page after logout
       navigate("/admin-login");
+      console.log("Logged out successfully");
     }
   };
 

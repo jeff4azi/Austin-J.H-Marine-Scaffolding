@@ -6,32 +6,41 @@ const EditProject = () => {
   const { projects, isLoading, setProjects } = useProjects();
 
   const handleDelete = async (id, bucketName, filePath) => {
-      const { error } = await supabase.from("projects").delete().eq("id", id);
-      deleteFile(bucketName, filePath)
-  
-      if (!error) {
-        setProjects((prev) => prev.filter((project) => project.id !== id));
-      } else {
-        console.error("Delete failed:", error.message);
-      }
-    };
+    // delete from DB first
+    const { error: dbError } = await supabase
+      .from("projects")
+      .delete()
+      .eq("id", id);
 
-  const deleteFile = (bucketName, filePath) => {
-    try {
-      const {data, error} = await supabase.storage
-        .from(bucketName)
-        .remove([filePath]);
-      
-      if (error) {
-        console.error('Error deleting file : ', error)
-      }
-      if (data) {
-        console.error('File deleted successfully : ', data)
-      }
-    } catch (err) {
-      console.log('Unexpected error', err);
+    if (dbError) {
+      console.error("Delete failed:", dbError.message);
+      return;
     }
-  }
+
+    // delete from bucket (await so it actually runs)
+    const { error: storageError } = await deleteFile(bucketName, filePath);
+
+    if (storageError) {
+      console.error("File delete failed:", storageError.message);
+    } else {
+      console.log("File deleted successfully");
+    }
+
+    // update local state
+    setProjects((prev) => prev.filter((project) => project.id !== id));
+  };
+
+  const deleteFile = async (bucketName, filePath) => {
+    const { data, error } = await supabase.storage
+      .from(bucketName)
+      .remove([filePath]);
+
+    if (error) {
+      return { error };
+    }
+
+    return { data };
+  };
 
   return (
     <>
@@ -42,9 +51,16 @@ const EditProject = () => {
             <div className="size-15 border-2 border-accent border-t-transparent animate-spin"></div>
           </div>
         ) : (
-          <section className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+          <section className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 px-5">
             {projects.map((project) => (
-              <ProjectCard key={project.id} {...project} admin={true} onDelete={() => handleDelete(project.id, "project_files", project.file_path)} /> // create a row named file_path that stores the bucket path for the file
+              <ProjectCard
+                key={project.id}
+                {...project}
+                admin={true}
+                onDelete={() =>
+                  handleDelete(project.id, "project_files", project.file_path) // make sure you have `file_path` column in DB storing the bucket path
+                }
+              />
             ))}
           </section>
         )}
