@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import AJH_logo from "../assets/images/AJH_logo.png";
+import AJH_logo from "../assets/images/AJH_Logo.png";
 import { sections } from "../data";
 import GetQuoteButton from "./GetQuoteButton";
 import { motion } from "framer-motion";
