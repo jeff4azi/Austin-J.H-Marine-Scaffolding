@@ -1,12 +1,18 @@
 import { useProjects } from "../context/ProjectContext";
 import ProjectCard from "../components/ProjectCard";
 import { supabase } from "../supabaseClient";
+import { useAuth } from "../context/AuthContext";
 
 const EditProject = () => {
   const { projects, isLoading, setProjects } = useProjects();
+  const { session, loading: authLoading } = useAuth(); // ⬅️ get loading too
+
+  let admin = false;
+  if (session) {
+    admin = true;
+  }
 
   const handleDelete = async (id, bucketName, filePath) => {
-    // delete from DB first
     const { error: dbError } = await supabase
       .from("projects")
       .delete()
@@ -17,16 +23,13 @@ const EditProject = () => {
       return;
     }
 
-    // delete from bucket (await so it actually runs)
     const { error: storageError } = await deleteFile(bucketName, filePath);
-
     if (storageError) {
       console.error("File delete failed:", storageError.message);
     } else {
       console.log("File deleted successfully");
     }
 
-    // update local state
     setProjects((prev) => prev.filter((project) => project.id !== id));
   };
 
@@ -35,12 +38,18 @@ const EditProject = () => {
       .from(bucketName)
       .remove([filePath]);
 
-    if (error) {
-      return { error };
-    }
-
+    if (error) return { error };
     return { data };
   };
+
+  // ⏳ if auth is still loading, don’t render yet
+  if (authLoading) {
+    return (
+      <div className="w-full flex justify-center items-center py-10">
+        <div className="size-15 border-2 border-accent border-t-transparent animate-spin"></div>
+      </div>
+    );
+  }
 
   return (
     <>
@@ -51,14 +60,14 @@ const EditProject = () => {
             <div className="size-15 border-2 border-accent border-t-transparent animate-spin"></div>
           </div>
         ) : (
-          <section className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 px-5">
+          <section className="w-full grid grid-cols-1 lg:grid-cols-2 gap-5 px-5">
             {projects.map((project) => (
               <ProjectCard
                 key={project.id}
                 {...project}
-                admin={true}
+                admin={admin}
                 onDelete={() =>
-                  handleDelete(project.id, "project_files", project.file_path) // make sure you have `file_path` column in DB storing the bucket path
+                  handleDelete(project.id, "project_files", project.file_path)
                 }
               />
             ))}

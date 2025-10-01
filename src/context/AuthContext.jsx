@@ -6,18 +6,20 @@ const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [session, setSession] = useState(null);
+  const [loading, setLoading] = useState(true); // ⬅️ new
 
   useEffect(() => {
-    // Check active session
-    const currentSession = supabase.auth.getSession();
-    currentSession.then(({ data }) => {
+    // Load from Supabase
+    supabase.auth.getSession().then(({ data }) => {
       setSession(data.session);
+      setLoading(false); // ✅ done loading
     });
 
-    // Listen for login/logout events
+    // Keep session in sync
     const { data: listener } = supabase.auth.onAuthStateChange(
       (_event, session) => {
         setSession(session);
+        setLoading(false);
       }
     );
 
@@ -27,7 +29,7 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ session }}>
+    <AuthContext.Provider value={{ session, loading }}>
       {children}
     </AuthContext.Provider>
   );
