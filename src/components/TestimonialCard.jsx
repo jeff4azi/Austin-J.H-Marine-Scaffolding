@@ -14,8 +14,8 @@ const TestimonialCard = ({
       variants={cardVariant}
       initial="hidden"
       whileInView="visible"
-      className={`px-5 py-3 lg:px-7 lg:py-5 rounded space-y-3 text-fluid-small shadow-2xl w-full md:[350px] lg:w-[400px]`}
-      style={{ backgroundColor: bg_color, color: text_color }}
+      className={`px-5 py-3 lg:px-7 lg:py-5 rounded space-y-3 text-fluid-small shadow-2xl w-full md:[350px] lg:w-[400px] flex flex-col justify-between lg:h-[230px]`}
+      style={{ backgroundColor: bg_color, color: text_color}}
     >
       <p>"{text}"</p>
       <div className="flex items-center gap-3">

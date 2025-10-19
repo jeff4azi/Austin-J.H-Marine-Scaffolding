@@ -71,16 +71,17 @@ const About = () => {
               viewport={{ once: true, amount: 0.3 }}
             >
               Austin J.H Technical Support Services Ltd. is a Lagos-based
-              scaffolding company with over 20 years of hands-on experience in
-              the industry. Specializing in industrial projects, we pride
-              ourselves on delivering reliable scaffolding solutions that put
-              safety first at every stage. Our team is made up of highly skilled
-              professionals with the manpower and expertise to take on projects
-              of any scale, ensuring efficiency, stability, and peace of mind
-              for our clients. Backed by decades of practical knowledge and a
-              strong commitment to excellence, we continue to build lasting
-              relationships while supporting the success of construction and
-              engineering projects across Nigeria.
+              scaffolding company with C.E.O having over 20 years of hands-on
+              experience in the industry being a worker in the well established
+              NigerDock Scaffolding company. Specializing in industrial
+              projects, we pride ourselves on delivering reliable scaffolding
+              solutions that put safety first at every stage. Our team is made
+              up of highly skilled professionals with the manpower and expertise
+              to take on projects of any scale, ensuring efficiency, stability,
+              and peace of mind for our clients. Backed by decades of practical
+              knowledge and a strong commitment to excellence, we continue to
+              build lasting relationships while supporting the success of
+              construction and engineering projects across Nigeria.
             </motion.p>
           </div>
           <section className="w-full grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 xl:place-items-center">

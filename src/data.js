@@ -1,16 +1,20 @@
-export const DATABASE_PASSWORD = "f7AtL2rcA8ZTXvjF";
+/* SupaBase stuffs */
+/* export const DATABASE_PASSWORD = "f7AtL2rcA8ZTXvjF"; */
 export const PROJECT_URL = "https://zdeiqrknlqyyotlvxztf.supabase.co";
 export const SUPABASE_ANON_KEY =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpkZWlxcmtubHF5eW90bHZ4enRmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTkwNzg3ODgsImV4cCI6MjA3NDY1NDc4OH0.SyexH1PuQeo3ACV6QhuWNUnwxsFSR2p3C9bfa912scc";
-export const EMAIL_KEY = "qcEkIpqrNmtMunprj";
 
-import client_1 from "./assets/images/client-1.webp";
-import client_2 from "./assets/images/client-2.webp";
-import client_3 from "./assets/images/client-3.jpg";
+/* photos for testimonial */
+import CEO from "./assets/images/CEO.jpg";
+import developer from "./assets/images/Developer.jpg";
+import manager from "./assets/images/Manager.jpg";
 
+/* emailjs stuffs */
 export const email_template_id = "template_ksm60jb";
 export const service_id = "service_i2mqi27";
+export const EMAIL_KEY = "qcEkIpqrNmtMunprj";
 
+/* Section Title text */
 export const hero_text = "Quality Scaffolding Solutions";
 export const service_text = "A Comprehensive Set Of Services";
 export const about_text =
@@ -96,57 +100,30 @@ export const about_details = [
 export const testimonials = [
   {
     id: 1,
-    text: "Austin J.H Technical Support Services Ltd provided exceptional scaffolding services for our recent construction project. Their team was professional, efficient, and ensured that all safety standards were met. We highly recommend their services to anyone in need of reliable scaffolding solutions.",
-    img: client_1,
-    position: "Customer",
+    text: "At Austin J.H Technical Support Services Ltd, safety, precision, and reliability aren't just buzzwords they're our standard. Every project we take on is backed by a skilled team, years of expeirence, and a deep commitment to getting the job done right. Until our clients speak for us, let our work speak for itself.",
+    img: CEO,
+    position: "C.E.O",
     bg_color: "#00AD5D",
     text_color: "#111812",
-    name: "John Doe",
+    name: "Austin Harry",
   },
   {
     id: 2,
-    text: "Austin J.H Technical Support Services Ltd provided exceptional scaffolding services for our recent construction project. Their team was professional, efficient, and ensured that all safety standards were met. We highly recommend their services to anyone in need of reliable scaffolding solutions.",
-    img: client_2,
-    position: "Customer",
+    text: "Building this site was more than just putting pages together - it was about capturing the trust, strength and prefessionalism that defines Austin J.H Technical Support Services Ltd. I designed it to reflect what they deliver in real life: solid structures, clear communication, and dependable results",
+    img: developer,
+    position: "Web Developer",
     bg_color: "#fbfff4",
     text_color: "#111812",
-    name: "Christina Lee",
+    name: "Jeffrey Austin",
   },
   {
     id: 3,
-    text: "Austin J.H Technical Support Services Ltd provided exceptional scaffolding services for our recent construction project. Their team was professional, efficient, and ensured that all safety standards were met. We highly recommend their services to anyone in need of reliable scaffolding solutions.",
-    img: client_3,
-    position: "Director",
+    text: "Every project we take on is a reflection of our standards - safe, timely, and professionally executed. This platform gives clients a cleareer way to reach us and see what we're about. We're proud of the work we do, and this site helps us show it.",
+    img: manager,
+    position: "Manager",
     bg_color: "#111812",
     text_color: "#fbfff4",
-    name: "Samantha Smith",
-  },
-  {
-    id: 1,
-    text: "Austin J.H Technical Support Services Ltd provided exceptional scaffolding services for our recent construction project. Their team was professional, efficient, and ensured that all safety standards were met. We highly recommend their services to anyone in need of reliable scaffolding solutions.",
-    img: client_1,
-    position: "Customer",
-    bg_color: "#00AD5D",
-    text_color: "#111812",
-    name: "John Doe",
-  },
-  {
-    id: 2,
-    text: "Austin J.H Technical Support Services Ltd provided exceptional scaffolding services for our recent construction project. Their team was professional, efficient, and ensured that all safety standards were met. We highly recommend their services to anyone in need of reliable scaffolding solutions.",
-    img: client_2,
-    position: "Customer",
-    bg_color: "#fbfff4",
-    text_color: "#111812",
-    name: "Christina Lee",
-  },
-  {
-    id: 3,
-    text: "Austin J.H Technical Support Services Ltd provided exceptional scaffolding services for our recent construction project. Their team was professional, efficient, and ensured that all safety standards were met. We highly recommend their services to anyone in need of reliable scaffolding solutions.",
-    img: client_3,
-    position: "Director",
-    bg_color: "#111812",
-    text_color: "#fbfff4",
-    name: "Samantha Smith",
+    name: "Happiness Austin",
   },
 ];
 

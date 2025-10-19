@@ -24,7 +24,7 @@ const GetQuoteButton = ({ size = 6, border }) => {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 1, ease: "easeInOut" }}
       viewport={{ once: true }}
-      href={social_icons[0].link}
+      href={social_icons[0].url}
       target="_blank"
       rel="noopener noreferrer"
       className={`p-2 rounded-full text-dark ${
