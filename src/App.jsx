@@ -1,5 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import { OverlayProvider } from "./context/OverlayContext";
+import { Analytics } from "@vercel/analytics/react";
 
 import Landing_Page from "./pages/Landing_Page";
 import AdminLoginPage from "./pages/AdminLoginPage";
@@ -36,7 +37,8 @@ const App = () => {
                 <Route path="edit-project" element={<EditProject />} />
               </Route>
             </Routes>
-          </main>
+            </main>
+            <Analytics />
           </ProjectsProvider>
         </AuthProvider>
       </AdminPageRoutingProvider>

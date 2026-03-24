@@ -13,6 +13,7 @@
     "@emailjs/browser": "^4.4.1",
     "@supabase/supabase-js": "^2.58.0",
     "@tailwindcss/vite": "^4.1.11",
+    "@vercel/analytics": "^2.0.1",
     "framer-motion": "^12.23.12",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
