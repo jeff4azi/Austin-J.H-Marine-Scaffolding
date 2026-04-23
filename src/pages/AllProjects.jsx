@@ -12,7 +12,7 @@ const AllProjects = () => {
       <Nav />
       <ContactOverlay isOpen={isOpen} onClose={() => setIsOpen(false)} />
 
-      <main className="min-h-screen bg-dark text-gray-300 pt-24 pb-16">
+      <main className="min-h-screen bg-light pt-24 pb-16">
         <Projects />
       </main>
 

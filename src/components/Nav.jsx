@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import AJH_logo from "../assets/images/AJH_Logo.png";
 import { sections } from "../data";
 import GetQuoteButton from "./GetQuoteButton";
 import { motion } from "framer-motion";
-
 import { useOverlay } from "../context/OverlayContext";
 
 const Nav = () => {
@@ -12,13 +12,32 @@ const Nav = () => {
   const [active, setActive] = useState("home");
 
   const { setIsOpen } = useOverlay();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const isLanding = location.pathname === "/";
+
+  const handleNavClick = (section) => {
+    setIsNavOverlayOpen(false);
+    if (isLanding) {
+      // already on landing — just scroll
+      const el = document.getElementById(section);
+      if (el) el.scrollIntoView({ behavior: "smooth" });
+    } else {
+      // navigate to landing and let the hash scroll happen
+      navigate(`/#${section}`);
+    }
+  };
 
   useEffect(() => {
     // Scroll shadow
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll);
 
-    // IntersectionObserver — whichever section is most visible wins
+    // Only run IntersectionObserver on landing page
+    if (!isLanding) {
+      return () => window.removeEventListener("scroll", handleScroll);
+    }
+
     const observers = [];
     const visibilityMap = {};
 
@@ -29,7 +48,6 @@ const Nav = () => {
       const observer = new IntersectionObserver(
         ([entry]) => {
           visibilityMap[id] = entry.intersectionRatio;
-          // pick the section with the highest visible ratio
           const mostVisible = Object.entries(visibilityMap).reduce(
             (best, [key, ratio]) => (ratio > best[1] ? [key, ratio] : best),
             ["home", 0],
@@ -47,14 +65,13 @@ const Nav = () => {
       window.removeEventListener("scroll", handleScroll);
       observers.forEach((o) => o.disconnect());
     };
-  }, []);
+  }, [isLanding]);
 
   const linksEl = sections.map((section) => (
     <motion.li key={section}>
       <a
-        onClick={() => setIsNavOverlayOpen(false)}
-        className={`${active == section ? "link-active" : ""}`}
-        href={`#${section}`}
+        onClick={() => handleNavClick(section)}
+        className={`cursor-pointer ${isLanding && active === section ? "link-active" : ""}`}
       >
         {section.charAt(0).toUpperCase() + section.slice(1)}
       </a>

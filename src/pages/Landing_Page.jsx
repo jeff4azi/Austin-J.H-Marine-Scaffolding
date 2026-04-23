@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { useOverlay } from "../context/OverlayContext";
 
 import Nav from "../components/Nav";
@@ -12,6 +14,19 @@ import ContactOverlay from "../components/ContactOverlay";
 
 const Landing_Page = () => {
   const { isOpen, setIsOpen } = useOverlay();
+  const { hash } = useLocation();
+
+  // When navigated here with a hash (e.g. /#services), scroll to that section
+  useEffect(() => {
+    if (!hash) return;
+    const id = hash.replace("#", "");
+    // slight delay to let the page render first
+    const timer = setTimeout(() => {
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: "smooth" });
+    }, 100);
+    return () => clearTimeout(timer);
+  }, [hash]);
 
   return (
     <>
