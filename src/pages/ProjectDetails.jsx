@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 import { useProjects } from "../context/ProjectContext";
 import Nav from "../components/Nav";
 import GetQuoteButton from "../components/GetQuoteButton";
