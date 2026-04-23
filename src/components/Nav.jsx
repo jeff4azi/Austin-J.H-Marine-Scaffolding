@@ -14,36 +14,45 @@ const Nav = () => {
   const { setIsOpen } = useOverlay();
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
-    };
-
-    setActive(
-      `${
-        localStorage.getItem("active-link")
-          ? localStorage.getItem("active-link")
-          : "home"
-      }`
-    );
-
+    // Scroll shadow
+    const handleScroll = () => setIsScrolled(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll);
 
-    // cleanup on unmount
-    return () => window.removeEventListener("scroll", handleScroll);
+    // IntersectionObserver — whichever section is most visible wins
+    const observers = [];
+    const visibilityMap = {};
+
+    sections.forEach((id) => {
+      const el = document.getElementById(id);
+      if (!el) return;
+
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          visibilityMap[id] = entry.intersectionRatio;
+          // pick the section with the highest visible ratio
+          const mostVisible = Object.entries(visibilityMap).reduce(
+            (best, [key, ratio]) => (ratio > best[1] ? [key, ratio] : best),
+            ["home", 0],
+          );
+          setActive(mostVisible[0]);
+        },
+        { threshold: Array.from({ length: 21 }, (_, i) => i * 0.05) },
+      );
+
+      observer.observe(el);
+      observers.push(observer);
+    });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      observers.forEach((o) => o.disconnect());
+    };
   }, []);
 
   const linksEl = sections.map((section) => (
     <motion.li key={section}>
       <a
-        onClick={() => {
-          setIsNavOverlayOpen(!isNavOverlayOpen);
-          setActive(section);
-          localStorage.setItem("active-link", section);
-        }}
+        onClick={() => setIsNavOverlayOpen(false)}
         className={`${active == section ? "link-active" : ""}`}
         href={`#${section}`}
       >
