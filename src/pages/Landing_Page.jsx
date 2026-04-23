@@ -10,8 +10,6 @@ import Quote from "../sections/Quote";
 import Footer from "../sections/Footer";
 import ContactOverlay from "../components/ContactOverlay";
 
-
-
 const Landing_Page = () => {
   const { isOpen, setIsOpen } = useOverlay();
 
@@ -27,7 +25,7 @@ const Landing_Page = () => {
         <Services />
       </section>
       <section id="projects" className="bg-dark text-gray-300">
-        <Projects />
+        <Projects limit={6} />
       </section>
       <section id="about">
         <About />

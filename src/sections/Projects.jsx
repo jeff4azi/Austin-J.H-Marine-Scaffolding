@@ -1,10 +1,14 @@
 import ProjectCard from "../components/ProjectCard";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import { project_text, parentVariant, childVariant } from "../data";
 import { useProjects } from "../context/ProjectContext";
 
-const Projects = () => {
+const Projects = ({ limit = null }) => {
   const { projects, isLoading } = useProjects();
+  const navigate = useNavigate();
+
+  const displayed = limit ? projects.slice(0, limit) : projects;
 
   return (
     <>
@@ -38,11 +42,32 @@ const Projects = () => {
               <div className="size-15 border-2 border-accent border-t-transparent animate-spin"></div>
             </div>
           ) : (
-            <section className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
-              {projects.map((project) => (
-                <ProjectCard key={project.id} {...project} />
-              ))}
-            </section>
+            <>
+              <section className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+                {displayed.map((project) => (
+                  <ProjectCard key={project.id} {...project} />
+                ))}
+              </section>
+
+              {limit && projects.length > limit && (
+                <div className="flex justify-center mt-10">
+                  <button
+                    onClick={() => navigate("/projects")}
+                    className="flex items-center gap-2 px-6 py-2.5 rounded-full border border-accent text-accent hover:bg-accent hover:text-dark font-semibold duration-300 hover:scale-105 active:scale-95 text-fluid-p"
+                  >
+                    View All Projects
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="size-4"
+                      fill="currentColor"
+                      viewBox="0 0 256 256"
+                    >
+                      <path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z" />
+                    </svg>
+                  </button>
+                </div>
+              )}
+            </>
           )}
         </div>
       </div>

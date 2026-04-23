@@ -9,6 +9,7 @@ import Messages from "./pages/Messages";
 import EditProject from "./pages/EditProject";
 import AddProject from "./pages/AddProject";
 import ProjectDetails from "./pages/ProjectDetails";
+import AllProjects from "./pages/AllProjects";
 import { AdminPageRoutingProvider } from "./context/AdminPageRoutingContext";
 import { AuthProvider } from "./context/AuthContext";
 import { ProjectsProvider } from "./context/ProjectContext";
@@ -23,6 +24,7 @@ const App = () => {
             <main className="relative">
               <Routes>
                 <Route path="/" element={<Landing_Page />} />
+                <Route path="/projects" element={<AllProjects />} />
                 <Route path="/projects/:id" element={<ProjectDetails />} />
                 <Route path="/admin-login" element={<AdminLoginPage />} />
 
